@@ -25,10 +25,14 @@ public class UserController {
 	public List<User> getAllUsers() {
 		return userService.getAllUsers();
 	}
+	
+	
 	@PostMapping("/users")
 	public User createUser(@RequestBody User user){
 		return userService.createUser(user);
 	}
+	
+	
 	@GetMapping("/users/{id}")
 	public Optional<User> getUserById(@PathVariable("id") Long id) {
 		return userService.getUserById(id);
@@ -38,8 +42,14 @@ public class UserController {
 	public User updateUserById(@PathVariable("id") Long id, @RequestBody User user) {
 		return userService.updateUserById(id, user);
 	}
+	
 	@DeleteMapping("/users/{id}")
 	public String deleteUserById(@PathVariable("id") Long id) {
 		return userService.deleteUserById(id);
+	}
+	
+	@GetMapping("/users/byusername/{username}")
+	public User findByUsername(@PathVariable("username") String username) {
+		return userService.getByUsername(username);
 	}
 }
